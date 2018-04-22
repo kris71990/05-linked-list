@@ -7,42 +7,35 @@ module.exports = class LinkedList {
     this.head = null;
   }
 
-  // insertAtHead(value) {
-  //   const node = new Node(value);
+  insertAtHead(value) {
+    const node = new Node(value);
 
-  //   node.next = this.head;
-  //   this.head = node;
-  //   return this;
-  // }
+    node.next = this.head;
+    this.head = node;
+    return this;
+  }
 
-  // insertAtEnd(value) {
-  //   const node = new Node(value);
-
-  //   if (!this.head) {
-  //     this.head = node;
-  //     return this;
-  //   }
-
-  //   let currentNode = this.head;
-  //   while (currentNode.next) {
-  //     currentNode = currentNode.next;
-  //   }
-  //   currentNode.next = node;
-  //   return this;
-  // }
-
-  pop() {
-    // const node = new Node(value);
+  insertAtEnd(value) {
+    const node = new Node(value);
 
     if (!this.head) {
+      this.head = node;
       return this;
-    } 
+    }
 
     let currentNode = this.head;
     while (currentNode.next) {
       currentNode = currentNode.next;
     }
-    currentNode.next = null;
+    currentNode.next = node;
     return this;
+  }
+
+  pop() {
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode.value;
   }
 };
