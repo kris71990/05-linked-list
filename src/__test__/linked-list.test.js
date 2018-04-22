@@ -50,4 +50,12 @@ describe('linked list test', () => {
     list.insertAtHead(1);
     expect(list.remove(2)).toEqual(2);
   });
+
+  test('#map or reduce', () => {
+    const list = new LinkedList();
+    list.insertAtHead(3);
+    list.insertAtHead(2);
+    list.insertAtHead(1);
+    expect(list.reduce()).toEqual(6);
+  });
 });
