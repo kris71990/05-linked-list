@@ -7,6 +7,7 @@ module.exports = class LinkedList {
     this.head = null;
   }
 
+  // Big 0 runtime - O(1)
   insertAtHead(value) {
     const node = new Node(value);
 
@@ -15,6 +16,7 @@ module.exports = class LinkedList {
     return this;
   }
 
+  // Big 0 runtime - O(n)
   insertAtEnd(value) {
     const node = new Node(value);
 
@@ -31,6 +33,7 @@ module.exports = class LinkedList {
     return this;
   }
 
+  // Big 0 runtime - O(n)
   pop() {
     let currentNode = this.head;
     while (currentNode.next) {
@@ -41,6 +44,7 @@ module.exports = class LinkedList {
     return popped;
   }
 
+  // Big 0 runtime - O(n)
   remove(value) {
     let currentNode = this.head;
 
@@ -50,5 +54,18 @@ module.exports = class LinkedList {
     const removed = currentNode.next.value;
     currentNode.next.value = null;
     return removed;
+  }
+
+  // Big 0 runtime - O(n)
+  reduce() {
+    let currentNode = this.head;
+    let sum = 0;
+
+    while (currentNode.next) {
+      sum += currentNode.value;
+      currentNode = currentNode.next;
+    }
+    sum += currentNode.value;
+    return sum;
   }
 };

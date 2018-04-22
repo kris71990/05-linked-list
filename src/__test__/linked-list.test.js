@@ -1,7 +1,6 @@
 'use strict';
 
 const LinkedList = require('../lib/linked-list');
-const Node = require('../lib/node');
 
 describe('linked list test', () => {
   test('#constructor', () => {
@@ -37,25 +36,50 @@ describe('linked list test', () => {
 
   test('#pop', () => {
     const list = new LinkedList();
-    list.insertAtEnd(1);
-    list.insertAtEnd(2);
-    list.insertAtEnd(3);
+
+    let counter = 0;
+    function addNodes() {
+      for (let i = 1; i < 4; i++) {
+        list.insertAtEnd(i + counter);
+      }
+      counter += 3;
+      return list;
+    }
+
+    addNodes();
     expect(list.pop()).toEqual(3);
+    addNodes();
+    expect(list.pop()).toEqual(6);
+    addNodes();
+    expect(list.pop()).toEqual(9);
   });
 
-  test('#remove value', () => {
+  test('#remove(value)', () => {
     const list = new LinkedList();
-    list.insertAtHead(3);
-    list.insertAtHead(2);
-    list.insertAtHead(1);
+    for (let i = 1; i < 10; i++) {
+      list.insertAtEnd(i);
+    }
     expect(list.remove(2)).toEqual(2);
+    expect(list.remove(8)).toEqual(8);
+    expect(list.remove(4)).toEqual(4);
   });
 
-  test('#map or reduce', () => {
+  test('#reduce', () => {
     const list = new LinkedList();
-    list.insertAtHead(3);
-    list.insertAtHead(2);
-    list.insertAtHead(1);
+
+    let counter = 0;
+    function addNodes() {
+      for (let i = 1; i < 4; i++) {
+        list.insertAtEnd(i + counter);
+      }
+      counter += 3;
+      return list;
+    }
+    addNodes();
     expect(list.reduce()).toEqual(6);
+    addNodes();
+    expect(list.reduce()).toEqual(21);
+    addNodes();
+    expect(list.reduce()).toEqual(45);
   });
 });
