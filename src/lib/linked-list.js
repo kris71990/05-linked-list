@@ -36,6 +36,19 @@ module.exports = class LinkedList {
     while (currentNode.next) {
       currentNode = currentNode.next;
     }
-    return currentNode.value;
+    const popped = currentNode.value;
+    currentNode = null;
+    return popped;
+  }
+
+  remove(value) {
+    let currentNode = this.head;
+
+    while (currentNode.next.value !== value) {
+      currentNode = currentNode.next;
+    }
+    const removed = currentNode.next.value;
+    currentNode.next.value = null;
+    return removed;
   }
 };

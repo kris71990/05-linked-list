@@ -37,9 +37,17 @@ describe('linked list test', () => {
 
   test('#pop', () => {
     const list = new LinkedList();
+    list.insertAtEnd(1);
+    list.insertAtEnd(2);
+    list.insertAtEnd(3);
+    expect(list.pop()).toEqual(3);
+  });
+
+  test('#remove value', () => {
+    const list = new LinkedList();
     list.insertAtHead(3);
     list.insertAtHead(2);
     list.insertAtHead(1);
-    expect(list.pop()).toEqual(3);
+    expect(list.remove(2)).toEqual(2);
   });
 });
