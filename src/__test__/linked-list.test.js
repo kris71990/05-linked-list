@@ -75,6 +75,7 @@ describe('linked list test', () => {
       counter += 3;
       return list;
     }
+
     addNodes();
     expect(list.reduce()).toEqual(6);
     addNodes();

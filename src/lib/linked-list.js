@@ -52,7 +52,7 @@ module.exports = class LinkedList {
       currentNode = currentNode.next;
     }
     const removed = currentNode.next.value;
-    currentNode.next.value = null;
+    currentNode.next = currentNode.next.next;
     return removed;
   }
 
